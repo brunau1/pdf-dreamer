@@ -1,4 +1,4 @@
-import { PdfGeneratorOptionsModel } from '../..';
+import { PdfGeneratorOptionsModel } from '../../..';
 
 export interface IPdfGenerator {
 	generatePdfBufferFromHtmlTemplate(

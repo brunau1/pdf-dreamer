@@ -1,5 +1,5 @@
 import * as Puppeteer from 'puppeteer';
-import { PdfGeneratorOptionsModel } from '../..';
+import { PdfGeneratorOptionsModel } from '../../..';
 import { IPdfGeneratorStrategy } from './interfaces/pdf-generator-strategy';
 
 export class PdfGeneratorStrategy implements IPdfGeneratorStrategy {

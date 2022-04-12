@@ -1,4 +1,4 @@
-import { PdfGeneratorOptionsModel } from '..';
+import { PdfGeneratorOptionsModel } from '../..';
 import { IPdfGeneratorStrategy } from '../application/pdf-generator-strategy/interfaces/pdf-generator-strategy';
 import { PdfGeneratorStrategy } from '../application/pdf-generator-strategy/pdf-generator-strategy';
 import { IPdfGenerator } from './interfaces/pdf-generator';

@@ -1,0 +1,34 @@
+{
+	"name": "pdf-dreamer",
+	"version": "1.0.0",
+	"description": "Pdf generator. Render html template into pdf and return it as a buffer.",
+	"main": "index.js",
+	"directories": {
+		"test": "tests"
+	},
+	"dependencies": {
+		"puppeteer": "^13.5.2"
+	},
+	"devDependencies": {
+		"@types/puppeteer": "^5.4.5",
+		"typescript": "^4.6.3"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "npx tsc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/brunau1/pdf-dreamer.git"
+	},
+	"keywords": [
+		"generator",
+		"pdf-generator"
+	],
+	"author": "brunau1",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/brunau1/pdf-dreamer/issues"
+	},
+	"homepage": "https://github.com/brunau1/pdf-dreamer#readme"
+}

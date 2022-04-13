@@ -2,7 +2,7 @@ import { PdfGeneratorOptionsModel } from './pdf-generator-options';
 
 export interface IPdfGeneratorStrategy {
 	renderHtmlTemplateIntoPdf(
-		htmlTemplate: any,
+		htmlTemplate: string,
 		options?: PdfGeneratorOptionsModel
 	): Promise<Buffer>;
 }

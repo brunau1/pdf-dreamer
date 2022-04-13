@@ -4,10 +4,10 @@ import { IPdfGeneratorStrategy } from './interfaces/pdf-generator-strategy';
 
 export class PdfGeneratorStrategy implements IPdfGeneratorStrategy {
 	public async renderHtmlTemplateIntoPdf(
-		htmlTemplate: any,
+		htmlTemplate: string,
 		options?: PdfGeneratorOptionsModel
 	): Promise<Buffer> {
-		const browser = await Puppeteer.launch({ headless: true });
+		const browser = await Puppeteer.launch();
 		const page = await browser.newPage();
 
 		await page.setContent(htmlTemplate);

@@ -1,4 +1,4 @@
-import * as Puppeteer from 'puppeteer';
+import puppeteer = require('puppeteer');
 import { PdfGeneratorOptionsModel } from '../../..';
 import { IPdfGeneratorStrategy } from './interfaces/pdf-generator-strategy';
 
@@ -7,7 +7,7 @@ export class PdfGeneratorStrategy implements IPdfGeneratorStrategy {
 		htmlTemplate: string,
 		options?: PdfGeneratorOptionsModel
 	): Promise<Buffer> {
-		const browser = await Puppeteer.launch();
+		const browser = await puppeteer.launch({ headless: true });
 		const page = await browser.newPage();
 
 		await page.setContent(htmlTemplate);

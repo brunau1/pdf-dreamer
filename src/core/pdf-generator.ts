@@ -4,7 +4,7 @@ import { PdfGeneratorStrategy } from '../application/pdf-generator-strategy/pdf-
 import { IPdfGenerator } from './interfaces/pdf-generator';
 
 export class PdfGenerator implements IPdfGenerator {
-	constructor(private generatorStrategy: IPdfGeneratorStrategy) {}
+	private constructor(private generatorStrategy: IPdfGeneratorStrategy) {}
 
 	public generatePdfBufferFromHtmlTemplate(
 		htmlTemplate: string,

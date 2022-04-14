@@ -15,6 +15,7 @@
     "@types/puppeteer": "^5.4.5",
     "jest": "^27.5.1",
     "moq.ts": "^7.3.4",
+    "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
   },
   "scripts": {

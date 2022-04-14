@@ -16,8 +16,7 @@ export class PdfGenerator implements IPdfGenerator {
 		});
 	}
 
-	static make(): IPdfGenerator {
-		const generatorStrategy = new PdfGeneratorStrategy();
-		return new PdfGenerator(generatorStrategy);
+	static make(generatorStrategy?: IPdfGeneratorStrategy): IPdfGenerator {
+		return new PdfGenerator(generatorStrategy || new PdfGeneratorStrategy());
 	}
 }

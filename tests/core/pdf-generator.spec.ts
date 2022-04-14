@@ -19,31 +19,32 @@ describe('Dado um serviço para manipular o texto HTML', () => {
 			pdfGeneratorStrategyMock
 				.setup((mock) => mock.renderHtmlTemplateIntoPdf)
 				.returns(htmlRenderSpy);
-
-			describe('Dado que o arquivo PDF não deve ser salvo', () => {
+			describe('Dado que as options foram informadas', () => {
 				const optionsWithPath: PdfGeneratorOptionsModel = {
 					format: 'a4',
 					height: '100px',
 					path: './test/test.pdf',
 				};
 
-				const expectedOptions: PdfGeneratorOptionsModel = {
-					format: 'a4',
-					height: '100px',
-					path: undefined,
-				};
+				describe('Dado que o arquivo PDF não deve ser salvo', () => {
+					const expectedOptions: PdfGeneratorOptionsModel = {
+						format: 'a4',
+						height: '100px',
+						path: undefined,
+					};
 
-				it('Deve criar o buffer PDF com sucesso', async () => {
-					await pdfGenerator.generatePdfBufferFromHtmlTemplate(
-						simpleHtmlText,
-						optionsWithPath
-					);
+					it('Deve criar o buffer PDF com sucesso', async () => {
+						await pdfGenerator.generatePdfBufferFromHtmlTemplate(
+							simpleHtmlText,
+							optionsWithPath
+						);
 
-					expect(htmlRenderSpy).toHaveBeenNthCalledWith(
-						1,
-						simpleHtmlText,
-						expectedOptions
-					);
+						expect(htmlRenderSpy).toHaveBeenNthCalledWith(
+							1,
+							simpleHtmlText,
+							expectedOptions
+						);
+					});
 				});
 			});
 
@@ -51,7 +52,9 @@ describe('Dado um serviço para manipular o texto HTML', () => {
 				it('Deve criar o buffer PDF com sucesso', async () => {
 					await pdfGenerator.generatePdfBufferFromHtmlTemplate(simpleHtmlText);
 
-					expect(htmlRenderSpy).toHaveBeenNthCalledWith(1, simpleHtmlText);
+					expect(htmlRenderSpy).toHaveBeenNthCalledWith(2, simpleHtmlText, {
+						path: undefined,
+					});
 				});
 			});
 		});

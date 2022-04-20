@@ -5,7 +5,7 @@ import { IPdfGenerator } from '../../src/core/interfaces/pdf-generator';
 import { PdfGenerator } from '../../src/core/pdf-generator';
 describe('Dado um serviço para manipular o texto HTML', () => {
 	const pdfGeneratorStrategyMock = new Mock<IPdfGeneratorStrategy>();
-	const pdfGenerator: IPdfGenerator = PdfGenerator.make(
+	const pdfGenerator: IPdfGenerator = new PdfGenerator(
 		pdfGeneratorStrategyMock.object()
 	);
 

@@ -1,26 +1,33 @@
-import { PDFOptions, launch } from "puppeteer";
+import { Browser, Page, PDFOptions, PuppeteerNode } from 'puppeteer';
 
-import { IRenderHtmlService } from "../interfaces/render-html-service";
+import { IRenderHtmlService } from '../interfaces/render-html-service';
 
 export class RenderHtmlService implements IRenderHtmlService {
-  public async toPdf(
-    htmlTemplate: string,
-    options?: PDFOptions
-  ): Promise<Buffer> {
-    const browser = await launch({ headless: true });
-    const page = await browser.newPage();
+	public async toPdf(
+		htmlTemplate: string,
+		options?: PDFOptions
+	): Promise<Buffer> {
+		const puppeteer = await this.getPuppeteer();
+		const browser: Browser = await puppeteer.launch({ headless: true });
+		const page: Page = await browser.newPage();
 
-    await page.setContent(htmlTemplate);
+		await page.setContent(htmlTemplate);
 
-    const pdfBuffer = await page.pdf(options);
+		const pdfBuffer = await page.pdf(options);
 
-    await page.close();
-    await browser.close();
+		await page.close();
+		await browser.close();
 
-    return pdfBuffer;
-  }
+		return pdfBuffer;
+	}
+	private getPuppeteer() {
+		return new Promise<PuppeteerNode>((resolve, reject) => {
+			const puppeteer = require('puppeteer');
+			resolve(puppeteer);
+		});
+	}
 
-  static make(): IRenderHtmlService {
-    return new RenderHtmlService();
-  }
+	static make(): IRenderHtmlService {
+		return new RenderHtmlService();
+	}
 }

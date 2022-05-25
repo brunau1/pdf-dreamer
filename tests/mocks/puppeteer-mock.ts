@@ -1,18 +1,17 @@
-import { Browser, Page } from "puppeteer";
+import {Mock} from 'moq.ts';
+import {Browser, PuppeteerNode} from 'puppeteer';
 
-export const pageMock = {
-  pdf: jest.fn(),
-  setContent: jest.fn(),
+export const browserMock = {
+  newPage: jest.fn(),
   close: jest.fn(),
 };
 
-export const pageMoq = {
-  pdf: pageMock.pdf,
-  close: pageMock.close,
-  setContent: pageMock.setContent,
-} as unknown as Page;
+export const browserMoq = new Mock<Browser>()
+  .setup(m => m.newPage)
+  .returns(browserMock.newPage)
+  .setup(m => m.close)
+  .returns(browserMock.close);
 
-export const browserMoq = {
-  newPage: jest.fn().mockResolvedValue(pageMoq),
-  close: jest.fn().mockResolvedValue(null),
-} as unknown as Browser;
+export const puppeteerMoq = new Mock<PuppeteerNode>()
+  .setup(mock => mock.launch)
+  .returns(async () => browserMoq.object());
